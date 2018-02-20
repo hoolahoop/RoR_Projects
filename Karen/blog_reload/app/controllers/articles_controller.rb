@@ -50,8 +50,3 @@ class ArticlesController < ApplicationController
 			params.require(:article).permit(:title, :text)
 		end
 end
-
-
-#sun leen fai loh
-#gong hey fa choi
-#sun tai geen hong
