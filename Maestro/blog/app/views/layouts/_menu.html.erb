@@ -2,25 +2,35 @@
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 	<span class="navbar-toggler-icon"></span>
   </button>
-  <a class="navbar-brand py-0" href="#">
+  <a class="navbar-brand py-0" href="../">
 	<%= image_tag("j-logo-1.png", alt: "Logo", width: "30", height: "30") %>
   </a>
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
 	<ul class="navbar-nav mr-auto">
-	  <!-- If not signed in, show these navbar options -->
-	  <li class="nav-item">
-		<a class="nav-link" href="Pages/Signin.html">Sign In</a>
-	  </li>
-	  <li class="nav-item">
-		<a class="nav-link" href="Pages/Register.html">Register</a>
-	  </li>
-	  <!-- If signed in, only show these navbar options -->
-	  <li class="nav-item">
-		<a class="nav-link" href="Pages/Profile.html">My Profile</a>
-	  </li>
-	  <li class="nav-item">
-		<a class="nav-link" href="#">Sign Out</a>
-	  </li>
+	  <% if not user_signed_in? %>
+	  	<!-- If not signed in, show these navbar options -->
+	  	  <li>
+		  	<% puts current_user %>
+		  </li>
+		  <li class="nav-item">
+			<%= link_to "Sign In", new_user_session_path, :class => 'nav-link ' + current_class?(new_user_session_path) %>
+		  </li>
+		  <li class="nav-item">
+			<%= link_to "Register", new_user_registration_path, :class => 'nav-link ' + current_class?(new_user_registration_path) %>
+		  </li>
+	  <% end %>
+	  <% if user_signed_in? %>
+		  <!-- If signed in, only show these navbar options -->
+		  <li>
+		  	<% puts current_user %>
+		  </li>
+		  <li class="nav-item">
+			<%= link_to "My Profile", edit_user_registration_path, :class => 'nav-link ' + current_class?(edit_user_registration_path) %>
+		  </li>
+		  <li class="nav-item">
+			<%= link_to "Sign Out", destroy_user_session_path, :method => :delete, :class => 'nav-link' %>
+		  </li>
+	  <% end %>
 	</ul>
 	<ul class="navbar-nav ml-auto">
 	  <!-- If not signed in, show this navbar option -->
@@ -29,7 +39,7 @@
 	  </li>
 	  <li class="nav-item">
 		<!--<a class="nav-link" href="#">Secret Santa</a>-->
-		<%= link_to "Articles", articles_path, :class => 'nav-link ' + current_class?(articles_path)  %>
+		<%= link_to "Articles", articles_path, :class => 'nav-link ' + current_class?(articles_path) %>
 	  </li>
 	  <!-- If signed in, show this navbar dropdown menu -->
 	  <!--
