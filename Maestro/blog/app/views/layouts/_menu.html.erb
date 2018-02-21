@@ -33,26 +33,30 @@
 	  <% end %>
 	</ul>
 	<ul class="navbar-nav ml-auto">
-	  <!-- If not signed in, show this navbar option -->
-	  <li class="nav-item">
-		<a class="nav-link" href="#">Secret Santa</a>
-	  </li>
-	  <li class="nav-item">
-		<!--<a class="nav-link" href="#">Secret Santa</a>-->
-		<%= link_to "Articles", articles_path, :class => 'nav-link ' + current_class?(articles_path) %>
-	  </li>
-	  <!-- If signed in, show this navbar dropdown menu -->
-	  <!--
-	  <li class="nav-item dropdown">
-		<a class="nav-link drowdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Secret Santa</a>
-		<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-		  <a class="dropdown-item active" href="#">Start Page</a>
-		  <div class="dropdown-divider"></div>
-		  <a class="dropdown-item" href="Pages/CreateSecretSanta.html">Create Event</a>
-		  <a class="dropdown-item" href="Pages/ManageEvents.html">Manage Events</a>
-		</div>
-	  </li>
-	  -->
+	  <% if not user_signed_in? %>
+	    <!-- If not signed in, show this navbar option -->
+		<li class="nav-item">
+		  <a class="nav-link" href="#">Secret Santa</a>
+		</li>
+		<li class="nav-item">
+		  <%= link_to "Articles", articles_path, :class => 'nav-link ' + current_class?(articles_path) %>
+		</li>
+	  <% end %>
+	  <% if user_signed_in? %>
+		<!-- If signed in, show this navbar dropdown menu -->
+		<li class="nav-item dropdown">
+		  <a class="nav-link drowdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Secret Santa</a>
+		  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+			<a class="dropdown-item active" href="#">Start Page</a>
+			<div class="dropdown-divider"></div>
+			<a class="dropdown-item" href="Pages/CreateSecretSanta.html">Create Event</a>
+			<a class="dropdown-item" href="Pages/ManageEvents.html">Manage Events</a>
+		  </div>
+		</li>
+		<li class="nav-item">
+		  <%= link_to "Articles", articles_path, :class => 'nav-link ' + current_class?(articles_path) %>
+		</li>
+	  <% end %>
 	  <li class="nav-item disabled">
 		<a class="nav-link disabled" href="#">Paraphernalia</a>
 	  </li>
