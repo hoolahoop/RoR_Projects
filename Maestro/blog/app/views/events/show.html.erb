@@ -1,0 +1,72 @@
+<div class="container-fluid">
+  <div class="row">
+  	<div class="col-md-1 col-lg-2 col-xl-3">
+	</div>
+	<div class="col-md-10 col-lg-8 col-xl-6">
+	  <h2 class="late mt-3">Event Name: <%= @event.name %></h2><br />
+	  
+	  <h4 class="late">Event Owner</h4>
+	  <p class="text-success">
+	  	<%= current_user.first_name %> <%= current_user.last_name %>
+	  </p>
+
+	  <h4 class="late">Event Description</h4>
+	  <p class="text-success">
+	  	<%= @event.description %>
+	  </p>
+
+	  <h4 class="late">Event Option</h4>
+	  <p class="text-success">
+	  	<%= @option %>
+	  </p>
+
+	  <h4 class="late">Date and Time of Event</h4>
+	  <div class="row">
+	    <div class="col-md-6">
+    	  <p class="text-success">
+		  	Date: <%= if !@event.date.nil? then @event.date.strftime("%B %d, %Y") end %>
+		  </p>
+    	</div>
+	    <div class="col-md-6">
+    	  <p class="text-success">
+		  	Time: <%= if !@event.time.nil? then @event.time.strftime("%l:%M %p") end %>
+		  </p>
+    	</div>
+	  </div>
+
+	  <h4 class="late">Location of Event</h4>
+	  <div class="row">
+	  	<div class=<%= if @event.apartment_number == 0 then "col-md-6" else "col-md-4" end%>>
+	  	  <p class="text-success">
+	  		City: <%= @event.city %>
+		  </p>
+	  	</div>
+	  	<div class=<%= if @event.apartment_number == 0 then "col-md-6" else "col-md-4" end%>>
+  		  <p class="text-success">
+	  		Address: <%= @event.street_address %>
+		  </p>
+	  	</div>
+	  	<% if @event.apartment_number != 0 then %>
+		  	<div class="col-md-4">
+			  <p class="text-success">
+		  		Apartment Number: <%= @event.apartment_number %>
+			  </p>
+		  	</div>
+	  	<% end %>
+	  </div>
+
+	  <h4 class="late">Event Password</h4>
+	  <p class="text-success">
+	  	<%= @event.password %>
+	  </p>
+
+	  <p class="mt-3">
+	  	<%= link_to 'Edit', edit_event_path(@event), :class => "btn btn-primary" %>
+	  	<%= link_to 'Back', events_path, :class => "btn btn-primary" %>
+	  </p>
+
+	</div>
+	<div class="col-md-1 col-lg-2 col-xl-3">
+	</div>
+  </div>
+</div>

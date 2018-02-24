@@ -1,28 +1,44 @@
 class EventsController < ApplicationController
 
 	def index
-		if(!current_user.nil?)
-			@current_user = current_user.id
-			@events = Event.find_by(user_id: @current_user)
-		else
-			redirect_to welcome_index_path
-		end
+		no_user and return
+		@events = Event.where(user_id: current_user.id)
 	end
 	
 	def show
-		@events = Event.find(params[:id])
+		no_user and return
+		@event = Event.find(params[:id])
+		is_user_invalid(@event) and return
+		@option
+		case @event.option
+		when 1
+			@option = "Secret Santa"
+		else
+			@option = "New Option, Not Available Yet"
+		end
 	end
 
 	def new
-		@events = Event.new
+		no_user and return
+		@event = Event.new
 	end
 
 	def edit
-		@events = Event.find(params[:id])
+		no_user and return
+		@event = Event.find(params[:id])
+		is_user_invalid(@event) and return
 	end
 
 	def create
+		no_user and return
  		@event = Event.new(event_params)
+ 		@event.user_id = current_user.id
+ 		if(@event.apartment_number.nil?)
+ 			@event.apartment_number = 0
+ 		end
+ 		if(@event.date.nil?)
+ 			@event.date = Date.new(2000, 1, 1)
+ 		end
 
  		if @event.save
  			redirect_to @event
@@ -32,7 +48,9 @@ class EventsController < ApplicationController
 	end
 
 	def update
+		no_user and return
 		@event = Event.find(params[:id])
+		is_user_invalid(@event) and return
 
 		if @event.update(event_params)
 			redirect_to @event
@@ -42,7 +60,9 @@ class EventsController < ApplicationController
 	end
 
 	def destroy
+		no_user and return
 		@event = Event.find(params[:id])
+		is_user_invalid(@event) and return
 		@event.destroy
 
 		redirect_to events_path
@@ -51,5 +71,17 @@ class EventsController < ApplicationController
 	private
 		def event_params
 			params.require(:event).permit(:name, :description, :option, :street_address, :apartment_number, :city, :date, :time, :password)
+		end
+
+		def no_user()
+			if(current_user.nil?)
+				return redirect_to welcome_index_path
+			end
+		end
+
+		def is_user_invalid(event_param)
+			if(current_user.id != event_param.user_id)
+				return redirect_to events_path
+			end
 		end
 end

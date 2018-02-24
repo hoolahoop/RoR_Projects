@@ -1,6 +1,6 @@
-<%= form_with(model: [ @article, @article.comments.build ]) do |form| %>
+<%= form_with model: @event, scope: :event, url: event_path, method: :put, local: true do |form| %>
  
-  <%#= render 'layouts/error_messages', object: @event %>
+  <%= render 'layouts/error_messages', object: @event %>
  
   <div class="form-group">
     <%= form.label :name %>
@@ -9,7 +9,7 @@
  
   <div class="form-group">
     <%= form.label :description %>
-    <%= form.text_area :text, class: 'form-control' %>
+    <%= form.text_area :description, class: 'form-control' %>
   </div>
 
   <div class="form-group">
