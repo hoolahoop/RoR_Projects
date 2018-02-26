@@ -47,10 +47,9 @@
 		<li class="nav-item dropdown">
 		  <a class="nav-link drowdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Secret Santa</a>
 		  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-			<a class="dropdown-item active" href="#">Start Page</a>
+			<%= link_to "New Event", new_event_path, :class => 'dropdown-item ' + current_class?(new_event_path) %>
 			<div class="dropdown-divider"></div>
-			<a class="dropdown-item" href="Pages/CreateSecretSanta.html">Create Event</a>
-			<a class="dropdown-item" href="Pages/ManageEvents.html">Manage Events</a>
+			<%= link_to "My Events", events_path, :class => 'dropdown-item ' + current_class?(events_path) %>
 		  </div>
 		</li>
 		<li class="nav-item">
