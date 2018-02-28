@@ -7,8 +7,9 @@ Rails.application.routes.draw do
   resources :users, only: [:index]
 
   resources :events do
-  	resources :users, only: [:new, :create, :destroy], path_names: { new: 'add' }
+  	resources :users, only: [:new, :create], path_names: { new: 'add' }
     get 'display' => 'users#display'
+    delete 'remove' => 'users#remove'
   end
 
   resources :articles do

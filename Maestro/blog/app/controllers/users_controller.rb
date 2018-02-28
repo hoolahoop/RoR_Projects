@@ -8,6 +8,7 @@ class UsersController < ApplicationController
 
 	def display
 		@users = User.joins("INNER JOIN events_users ON events_users.user_id = users.id AND events_users.event_id = #{params[:event_id]}")
+		@event = Event.find(params[:event_id])
 	end
 
 	def new
@@ -20,11 +21,7 @@ class UsersController < ApplicationController
 		redirect_to article_path(@article)
 	end
 
-	def destroy
-		#@article = Article.find(params[:article_id])
-		#@comment = @article.comments.find(params[:id])
-		#@comment.destroy
-
+	def remove
 		@event = Event.find(params[:event_id])
 		@user = User.find(params[:id])
 		@join = EventUser.find(params[event_id: :event_id, user_id: :id])
