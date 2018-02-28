@@ -1,0 +1,33 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-1 col-lg-2 col-xl-3">
+  </div>
+  <div class="col-md-10 col-lg-8 col-xl-6">
+    <h1 class="late mt-2">Guest List</h1>
+    <!--<p>
+      <%#= link_to 'New event', new_event_path, :class => "btn btn-primary" %>
+    </p>-->
+
+    <table class="table table-striped table-bordered table-dark" style="table-layout: fixed;">
+      <tr>
+        <th scope="col">First Name</th>
+        <th scope="col">Last Name</th>
+        <th scope="col">Email</th>
+        <th scope="col" style="width:83px;">Destroy</th>
+      </tr>
+      <% if !@users.nil? %>
+        <% @users.each do |user| %>
+          <tr>
+            <td scope="row" style="word-wrap: break-word;"><%= user.first_name %></td>
+            <td scope="row" style="word-wrap: break-word;"><%= user.last_name %></td>
+            <td scope="row" style="word-wrap: break-word;"><%= user.email %></td>
+            <td><%= link_to 'Destroy', user_path(user), method: :delete, data: { confirm: 'Are you sure?' }, :class => "text-primary" %></td>
+          </tr>
+        <% end %>
+      <% end %>
+    </table>
+  </div>
+  <div class="col-md-1 col-lg-2 col-xl-3">
+  </div>
+  </div>
+</div>

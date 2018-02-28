@@ -4,9 +4,12 @@ Rails.application.routes.draw do
 
   devise_for :users
   
-  resources :users, :only => [:index]
+  resources :users, only: [:index]
 
-  resources :events
+  resources :events do
+  	resources :users, only: [:new, :create, :destroy], path_names: { new: 'add' }
+    get 'display' => 'users#display'
+  end
 
   resources :articles do
   	resources :comments

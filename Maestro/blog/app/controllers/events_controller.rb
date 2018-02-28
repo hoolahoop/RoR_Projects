@@ -33,10 +33,6 @@ class EventsController < ApplicationController
 		no_user and return
  		@event = Event.new(event_params)
  		@event.user_id = current_user.id
- 		
- 		#if(@event.date.nil?)
- 		#	@event.date = Date.new(2000, 1, 1)
- 		#end
 
  		if @event.save
  			redirect_to @event
