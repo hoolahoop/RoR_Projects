@@ -1,0 +1,13 @@
+<%= form_for @event_join do |f| %>
+  <div id='users'>
+    <%= f.fields_for :users do |guest| %>
+      <%= render 'user_fields', :f => guest %>
+    <% end %>
+    <div class='links'>
+      <%= link_to_add_association 'add guest', f, :users %>
+    </div>
+  </div>
+  <% f.buttons do %>
+    <%= f.submit 'Save' %>
+  <% end %>
+<% end %>

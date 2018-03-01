@@ -7,12 +7,13 @@ class UsersController < ApplicationController
 	end
 
 	def display
-		@users = User.joins("INNER JOIN events_users ON events_users.user_id = users.id AND events_users.event_id = #{params[:event_id]}")
+		@users = User.joins("INNER JOIN event_users ON event_users.user_id = users.id AND event_users.event_id = #{params[:event_id]}")
 		@event = Event.find(params[:event_id])
 	end
 
 	def new
-
+		@users = User.new
+		@event_join = EventUser.new
 	end
 
 	def create

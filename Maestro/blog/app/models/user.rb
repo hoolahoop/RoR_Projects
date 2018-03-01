@@ -4,9 +4,9 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has_many :events, dependent: :destroy
-  #has_many :events_users
-  #has_many :events, through: :event_users
+  #has_many :events, dependent: :destroy
+  has_many :event_users
+  has_many :events, through: :event_users
   validates :first_name, presence: true, length: { minimum: 2, maximum: 50 }
   validates :last_name, presence: true, length: { minimum: 2, maximum: 50 }
 end
