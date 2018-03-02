@@ -1,4 +1,4 @@
-<%= form_for @event_join do |f| %>
+<%= form_for @event, url: event_users_path, method: :post do |f| %>
   <div id='users'>
     <%= f.fields_for :users do |guest| %>
       <%= render 'user_fields', :f => guest %>
@@ -7,7 +7,7 @@
       <%= link_to_add_association 'add guest', f, :users %>
     </div>
   </div>
-  <% f.buttons do %>
+  <%# f.buttons do %>
     <%= f.submit 'Save' %>
-  <% end %>
+  <%# end %>
 <% end %>

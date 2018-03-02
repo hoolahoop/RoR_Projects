@@ -13,12 +13,24 @@ class UsersController < ApplicationController
 
 	def new
 		@users = User.new
-		@event_join = EventUser.new
+		@event = Event.find(params[:event_id])
 	end
 
 	def create
-		@article = Article.find(params[:article_id])
-		@comment = @article.comments.create(comment_params)
+		@event = Event.find(params[:event_id])
+
+		#get all users being added
+		
+
+		User.transaction do
+			#add all saves here
+		end
+
+		EventUser.transaction do
+			#add all associations here
+		end
+
+		#@comment = @article.comments.create(comment_params)
 		redirect_to article_path(@article)
 	end
 

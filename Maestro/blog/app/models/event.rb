@@ -3,6 +3,8 @@ class Event < ApplicationRecord
   has_many :event_users
   has_many :users, through: :event_users
 
+  accepts_nested_attributes_for :users
+
   validates :name, presence: true, length: { minimum: 5, maximum: 100 }
   validates :description, allow_nil: true, length: { maximum: 300 }
   validates :option, presence: true, numericality: { only_integer: true }
