@@ -20,7 +20,12 @@ class UsersController < ApplicationController
 		@event = Event.find(params[:event_id])
 
 		#get all users being added
-		
+		@user = User.new
+
+		@userArray = []
+		@userArray << User.new()
+
+		#generate random password for each new user
 
 		User.transaction do
 			#add all saves here
