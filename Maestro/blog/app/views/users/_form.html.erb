@@ -1,13 +1,15 @@
 <%= form_for @event, url: event_users_path, method: :post do |f| %>
-  <div id='users'>
+  <div id='users' class="row">
     <%= f.fields_for :users do |guest| %>
-      <%= render 'user_fields', :f => guest %>
+        <%= render 'user_fields', :f => guest %>
     <% end %>
-    <div class='links'>
-      <%= link_to_add_association 'add guest', f, :users %>
+    <div class='links mt-3 col-md-12'>
+      <%= link_to_add_association 'Add guest', f, :users, :class => "btn btn-primary" %>
     </div>
   </div>
   <%# f.buttons do %>
-    <%= f.submit 'Save' %>
+  <p class="mt-3">
+    <%= f.submit 'Save', :class => "btn btn-primary" %>
+  </p>
   <%# end %>
 <% end %>

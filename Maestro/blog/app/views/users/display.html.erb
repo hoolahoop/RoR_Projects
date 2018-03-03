@@ -21,7 +21,7 @@
             <td scope="row" style="word-wrap: break-word;"><%= user.first_name %></td>
             <td scope="row" style="word-wrap: break-word;"><%= user.last_name %></td>
             <td scope="row" style="word-wrap: break-word;"><%= user.email %></td>
-            <td><%= link_to 'Destroy', user_path(user), method: :delete, data: { confirm: 'Are you sure?' }, :class => "text-primary" %></td>
+            <td><%= link_to 'Destroy', event_delete_path(@event.id, user.id), method: :delete, data: { confirm: 'Are you sure?' }, :class => "text-primary" %></td>
           </tr>
         <% end %>
       <% end %>
