@@ -73,8 +73,9 @@ class EventsController < ApplicationController
 				:city, 
 				:date, 
 				:time, 
-				:password,
-				users_attributes: [:id, :first_name, :last_name, :email, :_destroy])
+				:password#,
+				#users_attributes: [:id, :first_name, :last_name, :email, :_destroy]
+				)
 		end
 
 		def no_user()

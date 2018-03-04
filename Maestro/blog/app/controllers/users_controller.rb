@@ -39,15 +39,23 @@ class UsersController < ApplicationController
 					end
 					Rails.logger.event.debug("User id check: #{@user}")
 					@event_user = EventUser.new(user_id: user.id, event_id: params[:event_id])
-					@event_user.save
+					EventUser.transaction do
+						@event_user.save
+					end
 				else
 					Rails.logger.event.debug("User in database id check: #{@user_in_database}")
 					@event_user_check = EventUser.find_by user_id: @user_in_database.id, event_id: params[:event_id]
 					if (@event_user_check.nil?)
 						@event_user = EventUser.new(user_id: @user_in_database.id, event_id: params[:event_id])
-						@event_user.save
+						EventUser.transaction do
+							@event_user.save
+						end
+					else
+						EventUser.transaction do
+							Rails.logger.event.debug("Join check: #{@event_user_check.event_id}")
+							@event_user_check.delete
+						end
 					end
-					
 				end
 			end
 			redirect_to event_display_path(params[:event_id])
