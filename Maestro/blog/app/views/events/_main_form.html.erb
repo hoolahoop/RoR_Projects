@@ -1,0 +1,14 @@
+<%= form_for @event, url: event_make_path, method: :post do |f| %>
+  <%= f.hidden_field :id, class: 'd-xs-none' %>
+  <div id='guests' class="row">
+    <%= f.fields_for :guests do |guest| %>
+        <%= render 'guest_fields', :f => guest %>
+    <% end %>
+    <div class='links mt-3 col-md-12'>
+      <%= link_to_add_association 'Add guest', f, :guests, :class => "btn btn-primary" %>
+    </div>
+  </div>
+  <p class="mt-3">
+    <%= f.submit 'Save', :class => "btn btn-primary" %>
+  </p>
+<% end %>

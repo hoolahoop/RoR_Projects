@@ -1,11 +1,8 @@
 class Event < ApplicationRecord
-  #belongs_to :user
-  belongs_to :owner, class_name: "User", foreign_key: :user_id
-  has_many :event_users
-  has_many :users, through: :event_users
+  belongs_to :user
+  has_many :guests, dependent: :destroy, inverse_of: :event
 
-  accepts_nested_attributes_for :users
-  accepts_nested_attributes_for :event_users
+  accepts_nested_attributes_for :guests, :allow_destroy => true
 
   validates :name, presence: true, length: { minimum: 5, maximum: 100 }
   validates :description, allow_nil: true, length: { maximum: 300 }

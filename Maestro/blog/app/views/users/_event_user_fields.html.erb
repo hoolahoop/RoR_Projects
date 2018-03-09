@@ -1,0 +1,12 @@
+<%= f.hidden_field :id, class: 'd-xs-none' %>
+<div class='nested-fields col-md-6'>
+  <div class="field form-group">
+    <%= f.label :user %>
+    <%= f.text_field :user, class: 'form-control' %>
+  </div>
+  <div class="field form-group">
+    <%= f.label :event %>
+    <%= f.text_field :event, class: 'form-control' %>
+  </div>
+  <%= link_to_remove_association "Remove guest", f, :class => "btn btn-primary" %>
+</div>
