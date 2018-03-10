@@ -1,5 +1,6 @@
 <%= form_for @event, url: event_make_path, method: :post do |f| %>
   <%= f.hidden_field :id, class: 'd-xs-none' %>
+  <%= f.hidden_field :user_id, class: 'd-xs-none' %>
   <div id='guests' class="row">
     <%= f.fields_for :guests do |guest| %>
         <%= render 'guest_fields', :f => guest %>
