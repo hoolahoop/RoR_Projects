@@ -1,21 +1,29 @@
 class EventsController < ApplicationController
 
 	def index
+		#Rails.logger.event.debug("Index start. ===================================================\n")
 		no_user and return
 		@events = Event.where(user_id: current_user.id)
+		@guestEvents = Event.joins("INNER JOIN guests ON guests.event_id = events.id AND guests.email = '#{current_user.email}'")
+		#Rails.logger.event.debug("Index end. =====================================================\n")
 	end
 	
 	def show
 		no_user and return
 		@event = Event.find(params[:id])
-		is_user_invalid(@event) and return
-		@option
-		case @event.option
-		when 1
-			@option = "Secret Santa"
+		@isGuest = is_guest(@event)
+		if is_owner(@event) || @isGuest
+			@option
+			case @event.option
+			when 1
+				@option = "Secret Santa"
+			else
+				@option = "New Option, Not Available Yet"
+			end
 		else
-			@option = "New Option, Not Available Yet"
+			redirect_to events_path
 		end
+		#is_user_invalid(@event) and return
 	end
 
 	def new
@@ -67,8 +75,13 @@ class EventsController < ApplicationController
 	def display
 		no_user and return
 		@event = Event.find(params[:event_id])
-		is_user_invalid(@event) and return
-		@guests = Guest.where(event_id = params[:event_id])
+		@isGuest = is_guest(@event)
+		@isOwner = is_owner(@event)
+		if (@isOwner || @isGuest)
+			@guests = Guest.where(event_id: params[:event_id])
+		else
+			redirect_to events_path
+		end
 	end
 
 	def add
@@ -82,11 +95,11 @@ class EventsController < ApplicationController
 	def make
 		no_user and return
 		@event = Event.new(event_params)
-		#Rails.logger.event.debug("\nEvent user id: <#{@event.user_id}>.\n")
+		# Rails.logger.event.debug("Event user id: <#{@event.user_id}>.\n")
 		is_user_invalid(@event) and return
-		#Add guests that aren't in the list. Add user accounts for new guests. Remove users with _delete = true.
+		# Add guests that aren't in the list. Add user accounts for new guests. Remove users with _delete = true.
 		@event.guests.each do |guest|
-			#Check if user with same email as guest is in database. If it isn't, add it.
+			# Check if user with same email as guest is in database. If it isn't, add it.
 			@user_in_database = User.find_by email: guest.email
 			if (@user_in_database.nil?) # if user is not in the database (unique email check)
 				# create a new user
@@ -98,9 +111,10 @@ class EventsController < ApplicationController
 				@user.password_confirmation = @user.password
 				@user.save
 			end
-			#Check if guest record is in database. If it isn't, add it.
+			# Check if guest record is in database. If it isn't, add it. Also, owners of events can't be guests.
 			@guest_in_database = Guest.find_by email: guest.email, event_id: @event.id
-			if (@guest_in_database.nil?)
+			if (@guest_in_database.nil? && guest.email != current_user.email)
+				# create a new guest
 				@newGuest = Guest.new
 				@newGuest.email = guest.email
 				@newGuest.first_name = !@user_in_database.nil? ? @user_in_database.first_name : guest.first_name
@@ -155,4 +169,18 @@ class EventsController < ApplicationController
 			end
 		end
 
+		def is_owner(event_param)
+			if(current_user.id == event_param.user_id)
+				return true
+			end
+			return false
+		end
+
+		def is_guest(event_param)
+			@guestCheck = Guest.find_by event_id: event_param.id, email: current_user.email
+			if(!@guestCheck.nil?)
+				return true
+			end
+			return false
+		end
 end

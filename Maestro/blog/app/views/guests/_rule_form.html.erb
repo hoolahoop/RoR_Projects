@@ -1,0 +1,41 @@
+<%= form_for @guest, url: guest_path, method: :patch do |f| %>
+  <%= f.hidden_field :id, class: 'd-xs-none' %>
+  <%= f.hidden_field :email, class: 'd-xs-none' %>
+  <%= f.hidden_field :first_name, class: 'd-xs-none' %>
+  <%= f.hidden_field :last_name, class: 'd-xs-none' %>
+  <%= f.hidden_field :event_id, class: 'd-xs-none' %>
+  <div class="row">
+    <div class="col-md-6">
+
+    </div>
+    <div class="col-md-6">
+      <ul id="sortable" class="list-group">
+        <li class="list-group-item ui-state-default">Item 1</li>
+        <li class="list-group-item ui-state-default">Item 2</li>
+        <li class="list-group-item ui-state-default">Item 3</li>
+        <li class="list-group-item ui-state-default">Item 4</li>
+        <li class="list-group-item ui-state-default">Item 5</li>
+      </ul>
+    </div>
+  </div>
+
+  <p class="mt-3">
+    <%= f.submit 'Save', :class => "btn btn-primary" %>
+    <%= link_to 'Back', event_display_path(@event), :class => "btn btn-primary" %>
+  </p>
+
+  <!--
+  <div id='rules' class="row">
+    <%#= f.fields_for :rules do |rule| %>
+        <%#= render 'rule_fields', :f => rule %>
+    <%# end %>
+    <div class='links mt-3 col-md-12'>
+      <%#= link_to_add_association 'Add rule', f, :rules, :class => "btn btn-primary" %>
+    </div>
+  </div>
+  <p class="mt-3">
+    <%#= f.submit 'Save', :class => "btn btn-primary" %>
+    <%#= link_to 'Back', event_display_path(@event), :class => "btn btn-primary" %>
+  </p>
+  -->
+<% end %>

@@ -44,6 +44,15 @@ gem 'multi_logger'
 #Use cocoon for dynamically creating forms
 gem 'cocoon'
 
+#Use debugger for sql testing
+#gem 'debugger'
+
+#Use ruby-debug for sql testing
+#gem 'ruby-debug'
+
+#Use jquery-ui-rails for adding rules to guests in a fun way
+gem 'jquery-ui-rails'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

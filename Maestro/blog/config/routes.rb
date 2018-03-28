@@ -13,6 +13,8 @@ Rails.application.routes.draw do
     delete 'user_remove/:id' => 'events#remove', as: :delete
   end
 
+  resources :guests, only: [:edit, :update]
+
   resources :articles do
   	resources :comments
   end

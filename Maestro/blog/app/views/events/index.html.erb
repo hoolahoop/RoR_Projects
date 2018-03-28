@@ -10,9 +10,9 @@
 
     <table class="table table-striped table-bordered table-dark" style="table-layout: fixed;">
       <tr>
-        <th scope="col">Name</th>
+        <th scope="col">Owned Events</th>
         <th scope="col" style="width:75px;">Guests</th>
-        <th scope="col" style="width:67px;">Show</th>
+        <th scope="col" style="width:67px;">Details</th>
         <th scope="col" style="width:55px;">Edit</th>
         <th scope="col" style="width:83px;">Destroy</th>
       </tr>
@@ -21,13 +21,32 @@
           <tr>
             <td scope="row" style="word-wrap: break-word;"><%= event.name %></td>
             <td><%= link_to 'Guests', event_display_path(event), :class => "text-primary" %></td>
-            <td><%= link_to 'Show', event_path(event), :class => "text-primary" %></td>
+            <td><%= link_to 'Details', event_path(event), :class => "text-primary" %></td>
             <td><%= link_to 'Edit', edit_event_path(event), :class => "text-primary" %></td>
             <td><%= link_to 'Destroy', event_path(event), method: :delete, data: { confirm: 'Are you sure?' }, :class => "text-primary" %></td>
           </tr>
         <% end %>
       <% end %>
     </table>
+
+    <table class="table table-striped table-bordered table-dark" style="table-layout: fixed;">
+      <tr>
+        <th scope="col">Guest Events</th>
+        <th scope="col" style="width:75px;">Guests</th>
+        <th scope="col" style="width:67px;">Details</th>
+      </tr>
+      <% if !@guestEvents.nil? %>
+        <% @guestEvents.each do |event| %>
+          <%# Rails.logger.event.debug("Event.id: <#{event.id}>.\n") %>
+          <tr class="bg-success">
+            <td scope="row" style="word-wrap: break-word;"><%= event.name %></td>
+            <td><%= link_to 'Guests', event_display_path(event), :class => "text-success" %></td>
+            <td><%= link_to 'Details', event_path(event), :class => "text-success" %></td>
+          </tr>
+        <% end %>
+      <% end %>
+    </table>
+
   </div>
   <div class="col-md-1 col-lg-2 col-xl-3">
   </div>

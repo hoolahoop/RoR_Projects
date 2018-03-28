@@ -1,9 +1,10 @@
+<%#= render 'layouts/error_messages', object: f %>
 <%= f.hidden_field :id, class: 'd-xs-none' %>
 <%= f.hidden_field :event_id, class: 'd-xs-none' %>
 <div class='nested-fields col-md-6'>
   <div class="field form-group">
     <%= f.label :email %>
-    <%= f.text_field :email, class: 'form-control' %>
+    <%= f.email_field :email, class: 'form-control' %>
   </div>
   <div class="field form-group">
     <%= f.label :first_name %>
