@@ -1,0 +1,74 @@
+<div class="container-fluid">
+  <div class="row">
+  	<div class="col-md-1 col-lg-2 col-xl-3">
+	</div>
+	<div class="col-md-10 col-lg-8 col-xl-6" style="word-wrap: break-word;">
+	  <h1 class="late mt-2">Event Name: <%= @event.name %></h1><br />
+
+	  <div class="row">
+	  	<div class="col-md-6">
+		  <p class="text-success">
+			<span class="font-weight-bold">Created by:</span> <%= current_user.first_name %> <%= current_user.last_name %>
+		  </p>
+		</div>
+		<div class="col-md-6">
+		  <p class="text-success">
+		  	<span class="font-weight-bold">Option:</span> <%= @option %>
+		  </p>
+		</div>
+	  </div>
+
+	  <p class="text-success">
+	  	<span class="font-weight-bold">Description:</span> <%= @event.description %>
+	  </p>
+
+	  <div class="row">
+	    <div class="col-md-6">
+    	  <p class="text-success">
+		  	<span class="font-weight-bold">Date:</span> <%= if !@event.date.nil? then @event.date.strftime("%B %d, %Y") end %>
+		  </p>
+    	</div>
+	    <div class="col-md-6">
+    	  <p class="text-success">
+		  	<span class="font-weight-bold">Time:</span> <%= if !@event.time.nil? then @event.time.strftime("%l:%M %p") end %>
+		  </p>
+    	</div>
+	  </div>
+
+	  <div class="row">
+	  	<div class=<%= if (@event.apartment_number == 0 || @event.apartment_number.nil?) then "col-md-6" else "col-md-4" end%>>
+	  	  <p class="text-success">
+	  		<span class="font-weight-bold">City:</span> <%= @event.city %>
+		  </p>
+	  	</div>
+	  	<div class=<%= if (@event.apartment_number == 0 || @event.apartment_number.nil?) then "col-md-6" else "col-md-4" end%>>
+  		  <p class="text-success">
+	  		<span class="font-weight-bold">Address:</span> <%= @event.street_address %>
+		  </p>
+	  	</div>
+	  	<% if (@event.apartment_number != 0 && !@event.apartment_number.nil?) then %>
+		  	<div class="col-md-4">
+			  <p class="text-success">
+		  		<span class="font-weight-bold">Apartment Number:</span> <%= @event.apartment_number %>
+			  </p>
+		  	</div>
+	  	<% end %>
+	  </div>
+
+	  <p class="text-success">
+	  	<span class="font-weight-bold">Password:</span> <%= @event.password %>
+	  </p>
+
+	  <p class="mt-3">
+	  	<% if !@isGuest %>
+	  		<%= link_to 'Edit event', edit_event_path(@event), :class => "btn btn-primary" %>
+	  	<% end %>
+	  	<%= link_to 'Guest List', event_display_path(@event), :class => "btn btn-primary" %>
+	  	<%= link_to 'Back', events_path, :class => "btn btn-primary" %>
+	  </p>
+
+	</div>
+	<div class="col-md-1 col-lg-2 col-xl-3">
+	</div>
+  </div>
+</div>
