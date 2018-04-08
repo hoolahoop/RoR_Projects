@@ -16,9 +16,29 @@
     /*$( ".draggable" ).draggable({
       revert: true
     });*/
-    $( "#ruleList, #guestList" ).sortable({
+    $( "#ruleList" ).sortable({
       //revert: true,
-      connectWith: ".connectedSortable" 
+      connectWith: ".connectedSortable",
+      start: function(event, ui) {
+        //var start_pos = ui.item.index();
+        //ui.item.data('start_pos', start_pos);
+        var rule_count = $("#ruleList li").length - 1;
+        ui.item.data('rule_count', rule_count);
+        var guest_count = $("#guestList li").length;
+        ui.item.data('guest_count', guest_count);
+      }
+    }).disableSelection();
+    $( "#guestList" ).sortable({
+      //revert: true,
+      connectWith: ".connectedSortable",
+      start: function(event, ui) {
+        //var start_pos = ui.item.index();
+        //ui.item.data('start_pos', start_pos);
+        var rule_count = $("#ruleList li").length;
+        ui.item.data('rule_count', rule_count);
+        var guest_count = $("#guestList li").length - 1;
+        ui.item.data('guest_count', guest_count);
+      }
     }).disableSelection();
     //$( "ul, li" ).disableSelection();
   } );

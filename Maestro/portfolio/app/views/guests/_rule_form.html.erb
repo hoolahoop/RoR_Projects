@@ -31,8 +31,10 @@
         <% if !@guests.nil? %>
           <% @guests.each do |guest| %>
             <li class="draggable list-group-item ui-state-default">
-              <%= guest.hidden_field :id, class: 'd-xs-none' %>
-              <%= guest.hidden_field :email, class: 'd-xs-none' %>
+              <%= f.hidden_field :save_rule, :value => false, class: 'd-xs-none' %>
+              <%= f.hidden_field :rule_id, :value => -1, class: 'd-xs-none' %>
+              <%= f.hidden_field :guest_id, :value => guest.id, class: 'd-xs-none' %>
+              <%= f.hidden_field :guest_email, :value => guest.email, class: 'd-xs-none' %>
               <%= guest.first_name %> <%= guest.last_name %>
             </li>
           <% end %>
