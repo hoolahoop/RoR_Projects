@@ -10,3 +10,16 @@
 	</div>
   </div>
 </div>
+
+<script>
+  $( function() {
+    /*$( ".draggable" ).draggable({
+      revert: true
+    });*/
+    $( "#ruleList, #guestList" ).sortable({
+      //revert: true,
+      connectWith: ".connectedSortable" 
+    }).disableSelection();
+    //$( "ul, li" ).disableSelection();
+  } );
+</script>
