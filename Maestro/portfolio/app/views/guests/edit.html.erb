@@ -13,33 +13,27 @@
 
 <script>
   $( function() {
-    /*$( ".draggable" ).draggable({
-      revert: true
-    });*/
     $( "#ruleList" ).sortable({
-      //revert: true,
       connectWith: ".connectedSortable",
       start: function(event, ui) {
-        //var start_pos = ui.item.index();
-        //ui.item.data('start_pos', start_pos);
         var rule_count = $("#ruleList li").length - 1;
         ui.item.data('rule_count', rule_count);
-        var guest_count = $("#guestList li").length;
-        ui.item.data('guest_count', guest_count);
+      },
+      update: function(event, ui) {
+        var rule_count = ui.item.data('rule_count');
+        var new_rule_count = $("#ruleList li").length;
+        if(rule_count !== new_rule_count){
+          $("#guestList li #guest_save_rule").each(function( index ) {
+            $(this).val("false");
+          });
+          $("#ruleList li #guest_save_rule").each(function( index ) {
+            $(this).val("true");
+          });
+        }
       }
     }).disableSelection();
     $( "#guestList" ).sortable({
-      //revert: true,
-      connectWith: ".connectedSortable",
-      start: function(event, ui) {
-        //var start_pos = ui.item.index();
-        //ui.item.data('start_pos', start_pos);
-        var rule_count = $("#ruleList li").length;
-        ui.item.data('rule_count', rule_count);
-        var guest_count = $("#guestList li").length - 1;
-        ui.item.data('guest_count', guest_count);
-      }
+      connectWith: ".connectedSortable"
     }).disableSelection();
-    //$( "ul, li" ).disableSelection();
   } );
 </script>

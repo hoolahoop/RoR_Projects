@@ -1,7 +1,7 @@
 class GuestsController < ApplicationController
 
 	def edit
-		Rails.logger.event.debug("Edit start. ===================================================")
+		#Rails.logger.event.debug("Edit start. ===================================================")
 		no_user and return
 		@guest = Guest.find(params[:id])
 		@event = Event.find(@guest.event_id)
@@ -15,26 +15,32 @@ class GuestsController < ApplicationController
 				@guestRules += @guests.where(id: rule.guest_id)
 			end
 		end
-		Rails.logger.event.debug("Object guestRules: #{@guestRules}")
-		Rails.logger.event.debug("Edit end. ===================================================\n")
+		#Rails.logger.event.debug("Object guestRules: #{@guestRules}")
+		#Rails.logger.event.debug("Edit end. ===================================================\n")
 	end
 
 	def update
+		Rails.logger.event.debug("Update start. ===================================================")
 		no_user and return
 		@guest = Guest.find(params[:id])
 		@event = Event.find(@guest.event_id)
 		is_user_invalid(@event) and return
+		@guest_test = Guest.new(guest_params)
+		Rails.logger.event.debug("Object guest: #{@guest}")
+		Rails.logger.event.debug("Object guest_test: #{@guest_test.rules_attributes}")
 
 		if @guest.update(guest_params)
-			redirect_to @guest
+			redirect_to event_display_path(@event)
 		else
 			render 'edit'
 		end
+
+		Rails.logger.event.debug("Update end. ===================================================\n")
 	end
 
 	private
 		def guest_params
-			params.require(:event).permit(
+			params.require(:guest).permit(
 				:id,
 				:email,
 				:first_name,
