@@ -29,14 +29,15 @@
       <h4>Other Guests</h4>
       <ul id="guestList" class="list-group connectedSortable border-vibrant" style="min-height: 60px;">
         <% if !@guests.nil? %>
-          <%# @guests.each do |guest| %>
-          <% f.fields_for @guests do |guest| %>
+          <% @guests.each do |guest| %>
+          <%# Rails.logger.guest.debug("Object guests: #{@guests}") %>
+          <%# f.fields_for :guests, @guests do |guest| %>
             <li class="draggable list-group-item ui-state-default">
               <%= f.hidden_field :save_rule, :value => false, class: 'd-xs-none' %>
               <%= f.hidden_field :rule_id, :value => -1, class: 'd-xs-none' %>
               <%= f.hidden_field :id, class: 'd-xs-none' %>
               <%= f.hidden_field :email, class: 'd-xs-none' %>
-              <%= f.label :first_name %> <%= f.label :last_name %>
+              <%= guest.first_name %> <%= guest.last_name %>
             </li>
           <% end %>
         <% end %>

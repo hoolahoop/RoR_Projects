@@ -1,0 +1,99 @@
+# Logfile created on 2018-02-28 12:29:14 -0500 by logger.rb/56815
+
+D, [2018-03-05T11:59:50.051642 #4360] DEBUG -- : ===New Create===
+
+D, [2018-03-05T11:59:50.052642 #4360] DEBUG -- : User check: true
+D, [2018-03-05T11:59:50.052642 #4360] DEBUG -- : ===Redirect to Event Guests Page===
+D, [2018-03-05T11:59:50.052642 #4360] DEBUG -- : 
+D, [2018-03-05T12:00:33.346900 #4360] DEBUG -- : ===New Create===
+
+D, [2018-03-05T12:00:33.347900 #4360] DEBUG -- : User check: true
+D, [2018-03-05T12:00:33.347900 #4360] DEBUG -- : ===Redirect to Event Guests Page===
+
+D, [2018-03-05T12:09:11.089199 #4360] DEBUG -- : ===New Create===
+
+D, [2018-03-05T12:09:11.089199 #4360] DEBUG -- : User check: true
+D, [2018-03-05T12:09:11.089199 #4360] DEBUG -- : ===Redirect to Event Guests Page===
+
+D, [2018-03-05T12:09:16.801435 #4360] DEBUG -- : ===New Create===
+
+D, [2018-03-05T12:09:16.802435 #4360] DEBUG -- : User check: true
+D, [2018-03-05T12:09:16.802435 #4360] DEBUG -- : ===Redirect to Event Guests Page===
+
+D, [2018-03-05T12:18:09.020046 #4360] DEBUG -- : ===New Create===
+
+D, [2018-03-05T12:18:29.073057 #4360] DEBUG -- : ===New Create===
+
+D, [2018-03-05T12:19:20.259180 #4360] DEBUG -- : ===New Create===
+
+D, [2018-03-05T12:19:47.163841 #4360] DEBUG -- : ===New Create===
+
+D, [2018-03-05T12:20:04.637822 #4360] DEBUG -- : ===New Create===
+
+D, [2018-03-05T12:20:37.835993 #4360] DEBUG -- : ===New Create===
+
+D, [2018-03-05T12:20:57.319359 #4360] DEBUG -- : ===New Create===
+
+D, [2018-03-05T12:29:01.740463 #4360] DEBUG -- : ===New Create===
+
+D, [2018-03-05T12:29:02.148486 #4360] DEBUG -- : User check: true
+D, [2018-03-05T12:29:02.149486 #4360] DEBUG -- : User in database id check: #<User:0x000000000b418948>
+D, [2018-03-05T12:29:02.153486 #4360] DEBUG -- : Join check: 16
+D, [2018-03-05T12:29:49.075888 #4360] DEBUG -- : ===New Create===
+
+D, [2018-03-05T12:30:08.895696 #4360] DEBUG -- : ===New Create===
+
+D, [2018-03-05T12:30:09.341721 #4360] DEBUG -- : User check: true
+D, [2018-03-05T12:30:09.342721 #4360] DEBUG -- : User in database id check: #<User:0x000000000ead14d0>
+D, [2018-03-05T12:30:09.345721 #4360] DEBUG -- : Join check: 16
+D, [2018-03-05T12:39:19.808763 #4360] DEBUG -- : ===New Create===
+
+D, [2018-03-05T12:39:20.226787 #4360] DEBUG -- : Can we save all users: true. If true, continue.
+D, [2018-03-05T12:39:20.227787 #4360] DEBUG -- : User in database check. Id: 8. Email: test1@test.com.
+D, [2018-03-05T12:39:20.229788 #4360] DEBUG -- : Is there a join on this event for this user?. Join object: #<EventUser:0x000000000e5d0ee0>. If this is nil, no join exists.
+D, [2018-03-05T12:39:20.229788 #4360] DEBUG -- : Join user_id: 8. Join event_id: 16.
+D, [2018-03-05T12:39:20.229788 #4360] DEBUG -- : Try removing join.
+D, [2018-03-05T12:59:54.621691 #4360] DEBUG -- : ===New Create===
+
+D, [2018-03-05T12:59:55.066716 #4360] DEBUG -- : Can we save all users: true. If true, continue.
+D, [2018-03-05T12:59:55.067716 #4360] DEBUG -- : User in database check. Id: 8. Email: test1@test.com.
+D, [2018-03-05T12:59:55.070716 #4360] DEBUG -- : Is there a join on this event for this user?. Join object: #<EventUser:0x000000000b06be80>. If this is nil, no join exists.
+D, [2018-03-05T12:59:55.070716 #4360] DEBUG -- : Join user_id: 8. Join event_id: 16.
+D, [2018-03-05T12:59:55.070716 #4360] DEBUG -- : Try removing join.
+D, [2018-03-05T13:18:28.323016 #4360] DEBUG -- : ===New Create===
+
+D, [2018-03-05T13:18:28.756041 #4360] DEBUG -- : Can we save all users: true. If true, continue.
+D, [2018-03-05T13:18:28.757041 #4360] DEBUG -- : User in database check. Id: 8. Email: test1@test.com.
+D, [2018-03-05T13:18:28.760041 #4360] DEBUG -- : Is there a join on this event for this user?. Join object: #<EventUser:0x000000000c57cef0>. If this is nil, no join exists.
+D, [2018-03-05T13:18:28.760041 #4360] DEBUG -- : Join user_id: 8. Join event_id: 16.
+D, [2018-03-05T13:18:28.760041 #4360] DEBUG -- : Try removing join.
+D, [2018-03-05T13:33:36.726264 #4360] DEBUG -- : ===New Create===
+
+D, [2018-03-09T15:23:35.288044 #10148] DEBUG -- : ===New Create===
+
+D, [2018-03-09T16:22:28.357579 #10148] DEBUG -- : ===New Create===
+
+D, [2018-03-09T16:23:34.119395 #10148] DEBUG -- : ===New Create===
+
+D, [2018-03-09T16:23:34.146397 #10148] DEBUG -- : Guest in database check. Guest object: .
+D, [2018-03-09T16:24:53.175120 #10148] DEBUG -- : ===New Create===
+
+D, [2018-03-09T16:24:53.198121 #10148] DEBUG -- : Guest in database check. Guest object: .
+D, [2018-03-09T16:25:03.117321 #10148] DEBUG -- : ===New Create===
+
+D, [2018-03-09T16:25:03.141323 #10148] DEBUG -- : Guest in database check. Guest object: .
+D, [2018-03-09T16:25:03.145323 #10148] DEBUG -- : User in database check. User object: .
+D, [2018-03-09T16:25:34.998364 #10148] DEBUG -- : ===New Create===
+
+D, [2018-03-09T16:25:35.032366 #10148] DEBUG -- : Guest in database check. Guest object: .
+D, [2018-03-09T16:25:35.037367 #10148] DEBUG -- : User in database check. User object: .
+D, [2018-03-09T16:25:35.293381 #10148] DEBUG -- : User id check: #<User:0x000000000c803318>
+D, [2018-03-09T16:25:35.293381 #10148] DEBUG -- : ===Redirect to Event Guests Page===
+
+D, [2018-03-09T16:25:48.867363 #10148] DEBUG -- : ===New Create===
+
+D, [2018-03-09T16:25:48.873364 #10148] DEBUG -- : Guest in database check. Guest object: .
+D, [2018-03-09T16:25:48.876364 #10148] DEBUG -- : User in database check. User object: .
+D, [2018-03-09T16:25:49.092376 #10148] DEBUG -- : User id check: #<User:0x000000000e7d3e18>
+D, [2018-03-09T16:25:49.092376 #10148] DEBUG -- : ===Redirect to Event Guests Page===
+
